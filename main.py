@@ -3,10 +3,17 @@ from pyautogui import *
 import pyautogui
 import time
 import keyboard
-import random
 from win32 import win32api
 import win32con
 import cv2
+import customtkinter as ctk
+
+# creating window
+window = ctk.CTk()
+window.geometry("400x150")
+window.title("Python Auto Aim")
+window.grid_columnconfigure(0, weight = 1)
+window.grid_rowconfigure(0, weight = 1)
 
 # function to automate mouse click and hover
 def clicked(x ,y):
@@ -32,4 +39,13 @@ def auto_aim_on():
                     time.sleep(0.05)
                     break
 
-auto_aim_on()
+# button to activate the auto aim
+auto_aim_button = ctk.CTkButton(window, text = "Turn on auto aim", command=auto_aim_on)
+auto_aim_button.grid(row = 0, column = 0, padx = 20, pady = 20, sticky = "ew")
+
+# label to tell user to press 'q' to deactivate the auto aim bot
+user_label = ctk.CTkLabel(window, text = "Press 'q' to deactivate the auto aim bot")
+user_label.grid(row = 1, column = 0)
+
+# main loop to continuously run the window
+window.mainloop()
